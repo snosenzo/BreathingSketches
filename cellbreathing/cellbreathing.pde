@@ -35,7 +35,7 @@ void setup() {
   
   //size (800, 800);
   fullScreen();
-  background(255);
+  //background(255);
   smooth();
   // focus x position around horizontal center 
   xpos = new BiasedFloatRange(0, width, width/2, 0.3333f);
@@ -81,7 +81,7 @@ void setup() {
       }
   }
   noStroke();
-  fill(200, 0, 0);
+  fill(216, 72, 72);
   rect(0, 0, width, height);
 }
 

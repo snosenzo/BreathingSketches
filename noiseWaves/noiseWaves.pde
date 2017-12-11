@@ -1,6 +1,7 @@
 
 void setup(){
-  size(800, 800);
+
+  fullScreen();
   //pixelDensity(2);
   background(0);
   stroke(255);
@@ -12,11 +13,13 @@ float res = 1;
 float nx = 0, ny = 0, nz = 0;
 float maxd = 300;
 void draw(){
-  background(0);
+  //background(0);
+  fill(0, 25);
+  noStroke();
+  rect(0, 0, width, height);
   fill(255);
-  //rect(0, 0, width, height);
-  //noStroke();
-  stroke(0);
+  
+  //stroke(255);
   for(int i = 0;i < height; i+=spacing){
     if(dist(0, height/2, 0, i) < 300 || mousePressed ){
       beginShape();

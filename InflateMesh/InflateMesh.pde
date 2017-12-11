@@ -32,7 +32,7 @@ void draw() {
     box.computeFaceNormals();
     box.faceOutwards();
     box.computeVertexNormals();
-    background(220,70, 70);
+    background(216,72, 72);
     translate(width / 2, height / 2, 0);
     rotateX((height / 2 - mouseY) * 0.01f);
     rotateY((width / 2 - mouseX) * 0.01f);
@@ -43,7 +43,7 @@ void draw() {
     specular(255);
     shininess(100);
     gfx.origin(new Vec3D(), 50);
-    fill(#881010);
+    fill(216,72, 72);
     //noFill();
     noStroke();
     gfx.mesh(box, true, 0);

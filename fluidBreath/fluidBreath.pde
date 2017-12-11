@@ -11,10 +11,10 @@ AttractionBehavior2D botAttractor;
 Vec2D mousePos;
 Vec2D topPos, botPos;
 void setup() {
-  size( 800, 800);
-
+  //size( 800, 800);
+  fullScreen();
   physics = new VerletPhysics2D();
-  physics.setDrag(0.15f);
+  physics.setDrag(0.2f);
   //physics.setWorldBounds(new Rect(width/4, 0, width/2, height));
   topPos = new Vec2D(width/2, 20);
   botPos = new Vec2D(width/2, height -20);
@@ -30,26 +30,32 @@ void setup() {
 }
 
 void addParticle() {
-  VerletParticle2D p = new VerletParticle2D(Vec2D.randomVector().scale(5).addSelf(random(0, width), random(0, height)));
+  VerletParticle2D p = new VerletParticle2D(Vec2D.randomVector().scale(5).addSelf(random(width/2, width/2), random(height/2, height/2)));
   physics.addParticle(p);
   // negative attraction = repulsion
-  physics.addBehavior(new AttractionBehavior2D(p, 8, -.8f, 0.01f));
+  physics.addBehavior(new AttractionBehavior2D(p, 12, -.8f, 0.01f));
 }
 
 void draw() {
-  background(0, 0, 0);
+  background(216,72, 72);
   //topAttractor.setRadius(.8 * sin((PI / 2)* sin(frameCount / 30.0)));
   //botAttractor.setRadius(-.8 * sin((PI / 2)* sin(frameCount / 30.0)));
 
   topAttractor.setStrength(.8 * sin((PI / 2)* sin(frameCount / 30.0)));
   botAttractor.setStrength(-.8 * sin((PI / 2)* sin(frameCount / 30.0)));
   noStroke();
-  fill(255);
+  fill(190, 40, 40);
   if (physics.particles.size() < NUM_PARTICLES) {
     addParticle();
   }
   physics.update();
   for ( VerletParticle2D p : physics.particles) {
-    ellipse(p.x, p.y, 2, 2);
+    ellipse(p.x, p.y, 7, 7);
+  }
+}
+
+void keyPressed() {
+  if(key == 'r') {
+    setup();
   }
 }
