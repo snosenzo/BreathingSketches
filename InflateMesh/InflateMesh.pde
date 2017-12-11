@@ -1,33 +1,4 @@
-/**
- * <p>This example uses the attraction behavior to inflate a 3D mesh.
- * The mesh vertices are re-created as physics particles and connected
- * using springs. Upon mouse press the inflation force is applied,
- * counteracting the forces created by the springs, causing the mesh to
- * expand and deform.</p>
- * 
- * <p>Usage: Click and hold mouse button to inflate mesh</p>
- */
 
-/* 
- * Copyright (c) 2010 Karsten Schmidt
- * 
- * This demo & library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- * 
- * http://creativecommons.org/licenses/LGPL/2.1/
- * 
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
- 
 import toxi.geom.*;
 import toxi.geom.mesh.subdiv.*;
 import toxi.geom.mesh.*;
@@ -75,9 +46,9 @@ void draw() {
     fill(#881010);
     //noFill();
     noStroke();
-    gfx.mesh(box, true, 50f);
+    gfx.mesh(box, true, 0);
     physics.removeBehavior(inflate);
-  inflate=new AttractionBehavior3D(new Vec3D(), 500, 2 * sin((PI/3)* sin(frameCount / 10.0)) - .3, -2f );
+  inflate=new AttractionBehavior3D(new Vec3D(), 500, 2 * sin((PI/2)* sin(frameCount / 20.0)) - .3, -0f );
   physics.addBehavior(inflate);
 }
 
@@ -96,7 +67,7 @@ void initPhysics() {
     // turn mesh vertices into physics particles
     for (Vertex v : box.vertices.values()) {
         VerletParticle3D vp = new VerletParticle3D(v);
-        if(random(1) < .1) {
+        if(random(1) < .07) {
           vp.lock();
         }
         physics.addParticle(vp);
@@ -105,7 +76,7 @@ void initPhysics() {
     for (WingedEdge e : box.edges.values()) {
         VerletParticle3D a = physics.particles.get(((WEVertex) e.a).id);
         VerletParticle3D b = physics.particles.get(((WEVertex) e.b).id);
-        physics.addSpring(new VerletSpring3D(a, b, a.distanceTo(b), 0.3f));
+        physics.addSpring(new VerletSpring3D(a, b, a.distanceTo(b), 0.1f));
     }
 }
 

@@ -7,6 +7,7 @@ Waveform waveform;
 GeoSmile geosmile;
 CircleTranslation circletranslation;
 TwoCircles twocircles;
+SWCircle swcircle;
 
 float frameWavelength = 30;
 float thetaOffset = PI/2;
@@ -52,6 +53,8 @@ void draw() {
     circletranslation.draw();
   } else if(currScene == 4) {
     twocircles.draw();
+  } else if(currScene == 6) {
+    swcircle.draw();
   }
     
   if(currScene != nextScene || sceneChanging) {
@@ -93,6 +96,8 @@ void endScene(int scene) {
     circletranslation = null;
   } else if (scene == 4) {
     twocircles = null;
+  } else if (scene == 6) {
+    swcircle = null;
   }
 }
 
@@ -109,6 +114,8 @@ void startScene(int scene) {
     circletranslation = new CircleTranslation();
   } else if (scene == 4) {
     twocircles = new TwoCircles();
+  } else if (scene == 6) {
+    swcircle = new SWCircle();
   }
 }
   
@@ -135,7 +142,7 @@ void setupUI() {
 void keyPressed() {
   
   if(key == 'n'){
-    nextScene = (nextScene + 1) % 6;
+    nextScene = (nextScene + 1) % 7;
 
   }
   
