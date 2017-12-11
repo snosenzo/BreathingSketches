@@ -27,3 +27,9 @@ void draw() {
   
   theta+= PI/60.0;
 }
+
+void keyPressed(){
+  if(key =='s') {
+    saveFrame("lineweights" + random(2) + ".png");
+  }
+}

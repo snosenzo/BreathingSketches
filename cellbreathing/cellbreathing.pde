@@ -99,6 +99,12 @@ void draw() {
   //    stroke(0, 20);
   //    gfx.polygon2D(poly);
   //}
+  for(VerletParticle2D p: physics.particles) {
+    float x = p.x;
+    float y = p.y;
+    p.addForce(new Vec2D(random(-.2, .2), random(-.2, .2)));
+    //p.update();
+  }
   
   for(Polygon2D poly: polys) {
       stroke(140, 0, 0, 150);
@@ -127,4 +133,10 @@ void mouseDragged() {
 void mouseReleased() {
   // remove the mouse attraction when button has been released
   physics.removeBehavior(mouseAttractor);
+}
+
+void keyPressed() {
+  if(key =='s') {
+    saveFrame("voronoiBreath" + random(2) + ".png");
+  }
 }

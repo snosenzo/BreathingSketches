@@ -42,3 +42,8 @@ void draw(){
     nz+=.1;
   }
 }
+void keyPressed() {
+  if(key =='s') {
+    saveFrame("noiseLines" + random(2) + ".png");
+  }
+}

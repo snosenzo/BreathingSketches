@@ -58,4 +58,8 @@ void keyPressed() {
   if(key == 'r') {
     setup();
   }
+  
+  if(key =='s') {
+    saveFrame("fluidbreath" + random(2) + ".png");
+  }
 }

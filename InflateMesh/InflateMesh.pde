@@ -18,6 +18,7 @@ void setup() {
     fullScreen(P3D);
     gfx = new ToxiclibsSupport(this);
     initPhysics();
+    noCursor();
 }
 
 void draw() {
@@ -56,7 +57,7 @@ void initPhysics() {
     box = new WETriangleMesh();
     // create a simple start mesh
     //box.addMesh(new Cone(new Vec3D(0, 0, 0), new Vec3D(0, 1, 0), 10, 50, 100).toMesh(4));
-    box.addMesh((new Sphere(200)).toMesh(75));
+    box.addMesh((new Sphere(250)).toMesh(75));
     // then subdivide a few times...
     //box.subdivide();
     //box.subdivide();
@@ -84,6 +85,10 @@ void keyPressed() {
     if (key == 'r') {
         initPhysics();
     }
+    
+    if(key =='s') {
+    saveFrame("inflatemesh" + random(2) + ".png");
+  }
 }
 
 void mousePressed() {
