@@ -68,7 +68,7 @@ void initPhysics() {
     // turn mesh vertices into physics particles
     for (Vertex v : box.vertices.values()) {
         VerletParticle3D vp = new VerletParticle3D(v);
-        if(random(1) < .07) {
+        if(random(1) < .1) {
           vp.lock();
         }
         physics.addParticle(vp);
